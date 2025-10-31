@@ -138,40 +138,42 @@ KissXo, [31.10.2025 12:37]
     </section>
 
 <section id="menu" class="menu-section container" aria-labelledby="menu-title">
-      <h2 id="menu-title">Меню</h2>
-      <p style="color:var(--muted)">Популярные позиции — наш выбор для быстрого заказа</p>
-      <div class="grid" style="margin-top:20px">
-        <article class="card" data-id="1">
-          <img src="Капучино.jpg" alt="Капучино в чашке">
-          <h3>Капучино</h3>
-          <div class="price">200 ₽</div>
-          <div class="small">Молочная пена, обжарка средней степени</div>
-          <div style="margin-top:30px">
-            <button class="btn" onclick="addToCart(1,'Капучино',200)">В корзину</button>
-          </div>
-        </article>
-
-        <article class="card" data-id="2">
-          <img src="тирамису.jpg" alt="Тирамису десерт">
-          <h3>Тирамису</h3>
-          <div class="price">250 ₽</div>
-          <div class="small">Домашний сыр маскарпоне, нежный бисквит</div>
-          <div style="margin-top:12px">
-            <button class="btn" onclick="addToCart(2,'Тирамису',250)">В корзину</button>
-          </div>
-        </article>
-
-        <article class="card" data-id="3">
-          <img src="Кофевынос.jpg" alt="Кофе навынос">
-          <h3>Кофе навынос</h3>
-          <div class="price">150 ₽</div>
-          <div class="small">Быстро и аккуратно, в бумажном стаканчике</div>
-          <div style="margin-top:12px">
-            <button class="btn" onclick="addToCart(3,'Кофе навынос',150)">В корзину</button>
-          </div>
-        </article>
+  <h2 id="menu-title">Меню</h2>
+  <p style="color:var(--muted)">Популярные позиции — наш выбор для быстрого заказа</p>
+  <div class="grid" style="margin-top:20px">
+    <!-- Карточка товара -->
+    <article class="card" data-id="1">
+      <img src="Капучино.jpg" alt="Капучино в чашке">
+      <h3>Капучино</h3>
+      <div class="price">200 ₽</div>
+      <div class="small">Молочная пена, обжарка средней степени</div>
+      <div style="margin-top:30px">
+        <button class="btn" onclick="addToCart(1,'Капучино',200)">В корзину</button>
       </div>
-    </section>
+    </article>
+
+    <article class="card" data-id="2">
+      <img src="Тирамису.jpg" alt="Десерт в стаканчике">
+      <h3>Тирамису</h3>
+      <div class="price">250 ₽</div>
+      <div class="small">Домашний сыр маскарпоне, нежный бисквит</div>
+      <div style="margin-top:12px">
+        <button class="btn" onclick="addToCart(2,'Тирамису',250)">В корзину</button>
+      </div>
+    </article>
+
+    <article class="card" data-id="3">
+      <img src="Кофевынос.jpg" alt="Кофе на вынос">
+      <h3>Кофе навынос</h3>
+      <div class="price">150 ₽</div>
+      <div class="small">Быстро и аккуратно, в бумажном стаканчике</div>
+      <div style="margin-top:12px">
+        <button class="btn" onclick="addToCart(3,'Кофе навынос',150)">В корзину</button>
+      </div>
+    </article>
+  </div>
+</section>
   </main>
 </body>
 </html>
+
