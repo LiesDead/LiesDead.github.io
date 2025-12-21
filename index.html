@@ -1,4 +1,3 @@
-KissXo, [31.10.2025 12:37]
 <!doctype html>
 <html lang="ru">
 <head>
@@ -8,132 +7,164 @@ KissXo, [31.10.2025 12:37]
   <meta name="description" content="Xpresso — уютная кофейня в центре города. Кофе, десерты, завтраки навынос и кофе-брейки." />
   <style>
     /* --- Базовые настройки --- */
-      :root {
-          --bg: #f7efe6; /* бежевый */
-          --brown: #4b2f24; /* основной текст, шапка */
-          --accent: #ff8400; /* оранжевый */
-          --card: #fff6f0; /* карточки */
-          --muted: #8b6b60;
-          --radius: 12px;
-          --container: 1200px;
-          --gap: 20px;
-          --max-width: 1100px;
-          --shadow: 0 6px 18px rgba(75,47,36,0.08);
-          font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, 'Helvetica Neue', Arial;
-          .hero-image
-      }
-
-      {
-          padding: 10px;
-          border-radius: 14px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-      }
-
-      .hero-image img {
-          width: 100%;
-          border-radius: 12px;
-          object-fit: cover;
-          max-height: 320px;
-          box-shadow: var(--shadow);
-      }
-
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      background:var(--bg);
-      color:var(--brown);
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      line-height:1.5;
+    :root {
+        --bg: #f7efe6;
+        --brown: #4b2f24;
+        --accent: #ff8400;
+        --card: #fff6f0;
+        --muted: #8b6b60;
+        --radius: 12px;
+        --container: 1200px;
+        --gap: 20px;
+        --max-width: 1100px;
+        --shadow: 0 6px 18px rgba(75,47,36,0.08);
+        font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, 'Helvetica Neue', Arial;
     }
 
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      background: var(--bg);
+      color: var(--brown);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.5;
+      display: flex;
+      flex-direction: column;
+    }
+    main { flex: 1; }
+
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 18px; }
+    
     /* --- Шапка --- */
-    .site-header{
-      background:linear-gradient(180deg, rgba(75,47,36,0.98), rgba(75,47,36,0.98));
-      color:var(--bg);
-      position:sticky;top:0;z-index:40;
-      box-shadow:0 6px 20px rgba(0,0,0,0.08);
+    .site-header {
+      background: linear-gradient(180deg, rgba(75,47,36,0.98), rgba(75,47,36,0.98));
+      color: var(--bg);
+      position: sticky; top: 0; z-index: 40;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
     }
-    .container{max-width:var(--container);margin:0 auto;padding:18px}
-    .header-inner{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{display:flex;align-items:center;gap:12px}
-    .logo{width:52px;height:52px;border-radius:10px;background:var(--bg);display:flex;align-items:center;justify-content:center;color:var(--brown);font-weight:700}
-    .brand h1{margin:0;font-size:18px;letter-spacing:0.6px}
-    nav{display:flex;gap:14px}
-    nav a{color:var(--bg);text-decoration:none;padding:8px;border-radius:8px;font-weight:600}
-    nav a:hover, nav a:focus{background:rgba(255,255,255,0.06)}
+    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 0; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .logo { width: 52px; height: 52px; border-radius: 10px; background: var(--bg); display: flex; align-items: center; justify-content: center; color: var(--brown); font-weight: 700; font-size: 24px; }
+    .brand h1 { margin: 0; font-size: 18px; letter-spacing: 0.6px; }
+    nav { display: flex; gap: 14px; }
+    nav a { color: var(--bg); text-decoration: none; padding: 8px; border-radius: 8px; font-weight: 600; }
+    nav a:hover, nav a:focus { background: rgba(255,255,255,0.06); }
 
-    .cta{display:flex;gap:8px;align-items:center}
-    .btn{background:var(--accent);color:white;padding:9px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:700}
-    .btn.secondary{background:transparent;color:var(--bg);border:1px solid rgba(255,255,255,0.15)}
+    .cta { display: flex; gap: 8px; align-items: center; }
+    .btn { background: var(--accent); color: white; padding: 9px 14px; border-radius: 10px; border: 0; cursor: pointer; font-weight: 700; font-size: 14px; }
+    .btn.secondary { background: transparent; color: var(--bg); border: 1px solid rgba(255,255,255,0.15); }
 
     /* --- Hero / баннер --- */
-    .hero{padding:46px 0}
-    .hero-grid{display:grid;grid-template-columns:1fr 420px;gap:30px;align-items:center}
-    .hero-card{background:linear-gradient(180deg, rgba(75,47,36,0.06), rgba(75,47,36,0.01));padding:28px;border-radius:18px;box-shadow:var(--shadow)}
-    .super-title{color:var(--muted);font-weight:700}
-    .hero h2{margin:6px 0 16px;font-size:36px}
-    .hero p{margin:0 0 20px;color:var(--muted)}
-
-    .promo{display:flex;gap:12px}
-    .promo .badge{background:var(--accent);padding:10px 12px;border-radius:10px;color:white;font-weight:700}
+    .hero { padding: 46px 0; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 420px; gap: 30px; align-items: center; }
+    .hero-card { background: linear-gradient(180deg, rgba(75,47,36,0.06), rgba(75,47,36,0.01)); padding: 28px; border-radius: 18px; box-shadow: var(--shadow); }
+    .super-title { color: var(--muted); font-weight: 700; font-size: 14px; margin: 0 0 8px 0; }
+    .hero h2 { margin: 6px 0 16px; font-size: 36px; line-height: 1.2; }
+    .hero p { margin: 0 0 20px; color: var(--muted); }
+    .promo { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .promo .badge { background: var(--accent); padding: 10px 12px; border-radius: 10px; color: white; font-weight: 700; font-size: 14px; }
 
     /* --- Меню --- */
-    .menu-section{padding:40px 0}
-    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .card{background:var(--card);padding:18px;border-radius:14px;box-shadow:var(--shadow);display:flex;flex-direction:column;align-items:center;text-align:center}
-    .card img{width:100%;height:450px;object-fit:cover;border-radius:10px}
-    .card h3{margin:12px 0 6px}
-    .price{font-weight:800;margin-bottom:12px}
-    .card .small{color:var(--muted);font-size:14px}
+    .menu-section { padding: 40px 0; }
+    .grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 20px; }
+    .card { 
+      background: var(--card); 
+      padding: 18px; 
+      border-radius: 14px; 
+      box-shadow: var(--shadow); 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      text-align: center; 
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(75,47,36,0.15); }
+    .card img { 
+      width: 100%; 
+      height: 200px; 
+      object-fit: cover; 
+      border-radius: 10px; 
+      margin-bottom: 12px;
+    }
+    .card h3 { margin: 0 0 6px 0; font-size: 20px; }
+    .price { font-weight: 800; font-size: 24px; margin-bottom: 12px; color: var(--accent); }
+    .card .small { color: var(--muted); font-size: 14px; }
 
     /* --- О кофейне, акции, отзывы, контакты --- */
-    .two-col{display:grid;grid-template-columns:1fr 420px;gap:30px;align-items:center;padding:30px 0}
-    .cards-row{display:flex;gap:18px;flex-wrap:wrap}
-    .promo-card{flex:1;min-width:220px;padding:18px;border-radius:14px;background:var(--accent);color:white}
-
-    .reviews{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-    .review{background:#fff;border-radius:12px;padding:16px}
-    .stars{color:var(--accent);font-weight:800}
+    .two-col { display: grid; grid-template-columns: 1fr 420px; gap: 30px; align-items: center; padding: 30px 0; }
+    .cards-row { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 14px; }
+    .promo-card { flex: 1; min-width: 220px; padding: 18px; border-radius: 14px; background: var(--accent); color: white; }
+    .reviews { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin-top: 14px; }
+    .review { background: #fff; border-radius: 12px; padding: 16px; box-shadow: var(--shadow); }
+    .stars { color: var(--accent); font-weight: 800; font-size: 18px; }
 
     /* --- Footer / контакты --- */
-    footer{padding:28px 0;margin-top:26px}
-    .footer-inner{display:flex;justify-content:space-between;gap:20px;align-items:flex-start}
-    .map{height:180px;background:#eee;border-radius:10px}
+    footer { padding: 28px 0; margin-top: auto; background: var(--brown); color: var(--bg); }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; }
+    .map { height: 180px; background: linear-gradient(45deg, #ddd 25%, transparent 25%), linear-gradient(-45deg, #ddd 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ddd 75%), linear-gradient(-45deg, transparent 75%, #ddd 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px; border-radius: 10px; }
 
     /* --- Мобильный адаптив --- */
-    @media (max-width:980px){
-      .hero-grid,.two-col{grid-template-columns:1fr}
-      .grid{grid-template-columns:repeat(2,1fr)}
-      nav{display:none}
+    @media (max-width: 980px) {
+      .hero-grid, .two-col { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: repeat(2,1fr); }
+      nav { display: none; }
     }
-    @media (max-width:640px){
-      .grid{grid-template-columns:1fr}
-      .reviews{grid-template-columns:1fr}
-      .logo{width:44px;height:44px}
-      .hero h2{font-size:26px}
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: 1fr; }
+      .reviews { grid-template-columns: 1fr; }
+      .logo { width: 44px; height: 44px; font-size: 20px; }
+      .hero h2 { font-size: 26px; }
+      .header-inner { flex-direction: column; gap: 12px; text-align: center; }
+      .cta { order: -1; }
     }
 
-    /* --- Доп. стиль для формы/модал --- */
-    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.4);z-index:80}
-    .modal.show{display:flex}
-    .modal .sheet{width:100%;max-width:520px;background:white;padding:20px;border-radius:14px}
-    input,textarea,select{width:100%;padding:10px;border-radius:8px;border:1px solid #e6dcd6;margin-top:8px}
-    label{font-weight:700;font-size:14px}
+    /* --- Формы и модалы --- */
+    .modal { 
+      position: fixed; inset: 0; 
+      display: none; 
+      align-items: center; 
+      justify-content: center; 
+      background: rgba(0,0,0,0.4); 
+      z-index: 80; 
+      backdrop-filter: blur(4px);
+    }
+    .modal.show { display: flex; }
+    .modal .sheet { 
+      width: 100%; max-width: 520px; 
+      background: white; 
+      padding: 24px; 
+      border-radius: 14px; 
+      max-height: 90vh; 
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    }
+    input, textarea, select { 
+      width: 100%; 
+      padding: 12px; 
+      border-radius: 8px; 
+      border: 1px solid #e6dcd6; 
+      margin-top: 8px; 
+      font-size: 16px;
+    }
+    label { font-weight: 700; font-size: 14px; display: block; margin-top: 16px; }
+    label:first-child { margin-top: 0; }
 
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+    /* --- Картинки с fallback --- */
+    img { 
+      background: linear-gradient(45deg, #e9d9cf 25%, #f0e6dc 25%, #f0e6dc 50%, #e9d9cf 50%, #e9d9cf 75%, #f0e6dc 75%, #f0e6dc); 
+      background-size: 20px 20px;
+    }
+    img:not([src]) { background: #e9d9cf; }
   </style>
 </head>
 <body>
-
   <header class="site-header" role="banner">
     <div class="container header-inner">
       <div class="brand">
-        <div class="logo" aria-hidden>BT</div>
+        <div class="logo" aria-hidden>☕</div>
         <div>
           <h1>Xpresso</h1>
           <div style="font-size:12px;color:var(--bg);opacity:0.9">Кофе · Десерты · Завтраки навынос</div>
@@ -171,69 +202,79 @@ KissXo, [31.10.2025 12:37]
           </div>
         </div>
 
-        <div style="padding:10px;border-radius:14px;display:flex;align-items:center;justify-content:center">
-          <img src="/mnt/data/A_webpage_design_for_\"BeanTime\"_coffee_shop_is_dep.png" alt"" =style="width:100%;border-radius:12px;object-fit:cover;max-height:320px;box-shadow:var(--shadow)">
-        </div>
+        <figure class="hero-image" role="img" aria-label="Кофейня Xpresso">
+          <img src="Капучино.jpg" 
+               onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZTlkOWNmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxOCIgZmlsbD0iIzhiNmI2MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZG9taW5hbnQtYmFzZWxpbmU9Im1pZGRsZSI+UmVhZHkgZm9yIGlmIHlvdXIgaW1hZ2UgYmVsbG93IDwvdGV4dD48L3N2Zz4='; this.style.background='none'" 
+               alt="Кофейня Xpresso — уютная атмосфера">
+        </figure>
       </div>
     </section>
 
     <section id="menu" class="menu-section container" aria-labelledby="menu-title">
       <h2 id="menu-title">Меню</h2>
-      <p style="color:var(--muted)">Популярные позиции — наш выбор для быстрого заказа</p>
-      <div class="grid" style="margin-top:20px">
-        <!-- Карточка товара -->
-        <article class="card" data-id="1">
-          <img src="Капучино.jpg=80&w=1400&auto=format&fit=crop" alt="Капучино в чашке">
+      <p style="color:var(--muted); margin-bottom: 20px;">Популярные позиции — наш выбор для быстрого заказа</p>
+      <div class="grid">
+        <article class="card" data-id="1" tabindex="0">
+          <img src="Капучино.jpg" 
+               onerror="handleImageError(this)"
+               alt="Капучино в чашке с густой молочной пеной">
           <h3>Капучино</h3>
           <div class="price">200 ₽</div>
           <div class="small">Молочная пена, обжарка средней степени</div>
-          <div style="margin-top:30px">
+          <div style="margin-top:20px">
             <button class="btn" onclick="addToCart(1,'Капучино',200)">В корзину</button>
           </div>
         </article>
 
-        <article class="card" data-id="2">
-          <img src="Кофевынос.jpg=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGlyYW1pc3V8ZW58MHx8MHx8fDA%3D=80&w=1400&auto=format&fit=crop" alt="Десерт в стаканчике">
+        <article class="card" data-id="2" tabindex="0">
+          <img src="тирамису.jpg" 
+               onerror="handleImageError(this)"
+               alt="Тирамису в стаканчике — классический десерт">
           <h3>Тирамису</h3>
           <div class="price">250 ₽</div>
           <div class="small">Домашний сыр маскарпоне, нежный бисквит</div>
-          <div style="margin-top:12px">
+          <div style="margin-top:20px">
             <button class="btn" onclick="addToCart(2,'Тирамису',250)">В корзину</button>
           </div>
         </article>
 
-        <article class="card" data-id="3">
-          <img src="тирамису.jpg=80&w=1400&auto=format&fit=crop" alt="Кофе на вынос">
+        <article class="card" data-id="3" tabindex="0">
+          <img src="Кофевынос.jpg" 
+               onerror="handleImageError(this)"
+               alt="Кофе на вынос в удобном стаканчике">
           <h3>Кофе навынос</h3>
           <div class="price">150 ₽</div>
           <div class="small">Быстро и аккуратно, в бумажном стаканчике</div>
-          <div style="margin-top:12px">
+          <div style="margin-top:20px">
             <button class="btn" onclick="addToCart(3,'Кофе навынос',150)">В корзину</button>
           </div>
         </article>
       </div>
     </section>
 
-    <section id="about" class="container" style="padding:20px 0">
+    <section id="about" class="container" style="padding:40px 0">
       <div class="two-col">
         <div>
           <h2>О кофейне</h2>
-          <p style="color:var(--muted)">Xpresso — место, где кофе = настроение. Наша миссия — давать быстрое и качественное удовольствие для утренних ритуалов и рабочих перерывов.</p>
-          <ul>
+          <p style="color:var(--muted); margin-bottom: 20px;">Xpresso — место, где кофе = настроение. Наша миссия — давать быстрое и качественное удовольствие для утренних ритуалов и рабочих перерывов.</p>
+          <ul style="color: var(--brown); padding-left: 20px;">
             <li>Форма собственности: ИП</li>
             <li>Команда: бариста, администратор, кондитер, уборщик</li>
             <li>Адрес: центр города — удобный доступ для студентов и офисов</li>
           </ul>
         </div>
         <div>
-          <img src="https://images.unsplash.com/photo-1599579134411-bd068f77d4d9?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3Dq=80&w=1200&auto=format&fit=crop" alt="Интерьер кофейни" style="width:100%;border-radius:12px;object-fit:cover;box-shadow:var(--shadow)">
+          <img src="https://images.unsplash.com/photo-1599579134411-bd068f77d4d9?w=600&auto=format&fit=crop" 
+               onerror="handleImageError(this)"
+               alt="Интерьер кофейни Xpresso" 
+               style="width:100%;border-radius:12px;object-fit:cover;box-shadow:var(--shadow)">
         </div>
       </div>
     </section>
 
-    <section id="news" class="container" style="padding:10px 0 30px">
+    <section id="news" class="container" style="padding:40px 0 30px">
       <h2>Новости / Акции</h2>
-      <div class="cards-row" style="margin-top:14px">
+      <div class="cards-row">
         <div class="promo-card">
           <h3>Pumpkin Latte</h3>
           <p>Сезонное предложение — попробуйте ограниченный рецепт.</p>
@@ -245,9 +286,9 @@ KissXo, [31.10.2025 12:37]
       </div>
     </section>
 
-    <section id="reviews" class="container" style="padding:0 0 20px">
+    <section id="reviews" class="container" style="padding:40px 0 20px">
       <h2>Отзывы</h2>
-      <div class="reviews" style="margin-top:14px">
+      <div class="reviews">
         <div class="review">
           <div style="display:flex;justify-content:space-between;align-items:center">
             <strong>Анна</strong>
@@ -264,17 +305,18 @@ KissXo, [31.10.2025 12:37]
           <p style="margin-top:8px;color:var(--muted)">Быстрая доставка, спасибо.</p>
         </div>
       </div>
-      <div style="margin-top:12px">
+      <div style="margin-top:24px">
         <form id="reviewForm" onsubmit="event.preventDefault();addReview()">
           <label for="revName">Оставьте отзыв</label>
           <input id="revName" placeholder="Ваше имя" required>
-          <textarea id="revText" placeholder="Ваш отзыв" rows="3" required style="margin-top:8px"></textarea>
-          <button class="btn" style="margin-top:8px">Отправить</button>
+          <label for="revText">Ваш отзыв</label>
+          <textarea id="revText" rows="3" placeholder="Расскажите о вашем опыте..." required></textarea>
+          <button class="btn" style="margin-top:12px;width:100%">Отправить отзыв</button>
         </form>
       </div>
     </section>
 
-    <section id="contacts" class="container" style="padding:0 0 40px">
+    <section id="contacts" class="container" style="padding:40px 0">
       <h2>Контакты</h2>
       <div class="footer-inner">
         <div style="flex:1;max-width:520px">
@@ -282,26 +324,26 @@ KissXo, [31.10.2025 12:37]
           <p><strong>Телефон:</strong> +7 (999) 123-45-67</p>
           <p><strong>Часы работы:</strong> 8:00 — 20:00</p>
 
-          <h4 style="margin-top:12px">Бронирование</h4>
+          <h4 style="margin:24px 0 12px 0">Бронирование</h4>
           <form id="bookForm" onsubmit="event.preventDefault();submitBooking()">
             <label for="bname">Имя</label>
             <input id="bname" required>
             <label for="bphone">Телефон</label>
-            <input id="bphone" required>
+            <input id="bphone" type="tel" required>
             <label for="bdate">Дата и время</label>
             <input id="bdate" type="datetime-local" required>
-            <button class="btn" style="margin-top:10px">Забронировать</button>
+            <button class="btn" style="margin-top:12px;width:100%">Забронировать</button>
           </form>
         </div>
-        <div style="width:320px">
-          <div class="map" role="img" aria-label="Карта расположения кофейни"></div>
+        <div style="width:320px;flex-shrink:0">
+          <div class="map" role="img" aria-label="Карта расположения кофейни в центре города"></div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer style="background:var(--brown);color:var(--bg)">
-    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:10px">
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap">
       <div>© Xpresso, 2025</div>
       <div style="opacity:0.9">Сделано с любовью — команда Xpresso</div>
     </div>
@@ -311,8 +353,8 @@ KissXo, [31.10.2025 12:37]
   <div id="cartModal" class="modal" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
     <div class="sheet">
       <h3 id="cartTitle">Ваша корзина</h3>
-      <div id="cartItems" style="margin-top:12px"></div>
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:12px">
+      <div id="cartItems" style="margin:16px 0"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid #e6dcd6">
         <strong>Итого: <span id="cartTotal">0</span> ₽</strong>
         <div style="display:flex;gap:8px">
           <button class="btn" onclick="checkout()">Оформить</button>
@@ -323,78 +365,146 @@ KissXo, [31.10.2025 12:37]
   </div>
 
   <script>
-    // Небольшая логика корзины и форм — хранится только в памяти страницы
+    // Глобальные переменные
     const cart = [];
-    function addToCart(id,title,price){
-      const item = {id,title,price,qty:1};
-      const existing = cart.find(c=>c.id===id);
-      if(existing) existing.qty++;
-      else cart.push(item);
+
+    // Исправленная функция для обработки ошибок изображений
+    function handleImageError(img) {
+      img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZTlkOWNmIiBzdHJva2U9IiNkZGRkZGQiIHN0cm9rZS13aWR0aD0iMiIvPjx0ZXh0IHg9IjUwJSIgeT0iNTAlIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtd2VpZ2h0PSI3MDAiIGZvbnQtc2l6ZT0iMTQiIGZpbGw9IiM4YjZiNjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGRvbWluYW50LWJhc2VsaW5lPSJtaWRkbGUiPkltYWdlIG5vdCBmb3VuZDwvdGV4dD48L3N2Zz4=';
+      img.alt = img.alt + ' (изображение недоступно)';
+    }
+
+    // Корзина
+    function addToCart(id, title, price) {
+      const item = cart.find(c => c.id === id);
+      if (item) {
+        item.qty++;
+      } else {
+        cart.push({ id, title, price, qty: 1 });
+      }
       updateCartUI();
       openCart();
     }
-    function updateCartUI(){
+
+    function updateCartUI() {
       const list = document.getElementById('cartItems');
       list.innerHTML = '';
       let total = 0;
-      cart.forEach(it=>{
+      
+      cart.forEach(item => {
         const row = document.createElement('div');
-        row.style.display='flex';row.style.justifyContent='space-between';row.style.padding='8px 0';
-        row.innerHTML = `<div>${it.title} × ${it.qty}</div><div>${it.price*it.qty} ₽</div>`;
+        row.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #e6dcd6';
+        row.innerHTML = `
+          <div style="display:flex;flex-direction:column">
+            <span>${item.title}</span>
+            <small style="color:var(--muted)">${item.price} ₽ × ${item.qty}</small>
+          </div>
+          <div style="font-weight:700">${item.price * item.qty} ₽</div>
+        `;
         list.appendChild(row);
-        total += it.price*it.qty;
+        total += item.price * item.qty;
       });
+      
+      if (cart.length === 0) {
+        list.innerHTML = '<div style="text-align:center;color:var(--muted);padding:40px">Корзина пуста</div>';
+      }
+      
       document.getElementById('cartTotal').textContent = total;
-      document.getElementById('cartCount').textContent = cart.reduce((s,i)=>s+i.qty,0);
+      document.getElementById('cartCount').textContent = cart.reduce((sum, item) => sum + item.qty, 0);
     }
-    function openCart(){document.getElementById('cartModal').classList.add('show')}
-    function closeCart(){document.getElementById('cartModal').classList.remove('show')}
-    document.getElementById('openCart').addEventListener('click',openCart);
-    document.getElementById('cartModal').addEventListener('click',(e)=>{if(e.target===e.currentTarget) closeCart()});
 
-    function checkout(){
-      alert('Это демонстрационная версия. Реальное оформление заказа требует бэкенда.');
+    function openCart() {
+      document.getElementById('cartModal').classList.add('show');
+      updateCartUI();
+    }
+
+    function closeCart() {
+      document.getElementById('cartModal').classList.remove('show');
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert('Корзина пуста!');
+        return;
+      }
+      alert(`Заказ на ${cart.reduce((sum, item) => sum + item.qty, 0)} товаров на сумму ${document.getElementById('cartTotal').textContent} ₽ принят!\n\nЭто демонстрационная версия. Реальное оформление требует бэкенда.`);
+      cart.length = 0;
+      updateCartUI();
       closeCart();
     }
 
-    // Бронирование простая обработка
-    function submitBooking(){
-      const name = document.getElementById('bname').value;
-      const phone = document.getElementById('bphone').value;
+    // Формы
+    function submitBooking() {
+      const name = document.getElementById('bname').value.trim();
+      const phone = document.getElementById('bphone').value.trim();
       const date = document.getElementById('bdate').value;
-      if(!name||!phone||!date){alert('Заполните все поля');return}
-      alert('Спасибо, '+name+'! Ваша бронь на '+new Date(date).toLocaleString()+' принята.');
+      
+      if (!name || !phone || !date) {
+        alert('Заполните все поля!');
+        return;
+      }
+      
+      const dateTime = new Date(date).toLocaleString('ru-RU');
+      alert(`Спасибо, ${name}! Ваша бронь на ${dateTime} принята. Мы свяжемся с вами по телефону ${phone}`);
       document.getElementById('bookForm').reset();
     }
 
-    // Отзывы
-    function addReview(){
-      const name = document.getElementById('revName').value;
-      const text = document.getElementById('revText').value;
-      if(!name||!text) return alert('Заполните имя и отзыв');
+    function addReview() {
+      const name = document.getElementById('revName').value.trim();
+      const text = document.getElementById('revText').value.trim();
+      
+      if (!name || !text) {
+        alert('Заполните имя и отзыв!');
+        return;
+      }
+      
       const container = document.querySelector('#reviews .reviews');
-      const div = document.createElement('div');
-      div.className='review';
-      div.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:center"><strong>${escapeHtml(name)}</strong><div class="stars">★★★★★</div></div><p style="margin-top:8px;color:var(--muted)">${escapeHtml(text)}</p>`;
-      container.appendChild(div);
+      const review = document.createElement('div');
+      review.className = 'review';
+      review.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <strong>${name}</strong>
+          <div class="stars">★★★★★</div>
+        </div>
+        <p style="margin-top:8px;color:var(--muted)">${text}</p>
+      `;
+      container.insertBefore(review, container.firstChild);
       document.getElementById('reviewForm').reset();
+      alert('Спасибо за отзыв!');
     }
-    function escapeHtml(s){return s.replace(/[&<>\"']/g, function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[c]})}
 
-    // Инициализация: если картинка не доступна, подставляем фон
-    (function(){
-      const imgs = document.querySelectorAll('img');
-      imgs.forEach(img=>{
-        img.addEventListener('error',()=>{
-          img.style.background='#e9d9cf';img.src='';
-        })
-      })
-    })();
+    // Инициализация
+    document.addEventListener('DOMContentLoaded', function() {
+      // Обработчики кнопок
+      document.getElementById('openCart').addEventListener('click', openCart);
+      document.getElementById('openBook').addEventListener('click', () => {
+        document.getElementById('contacts').scrollIntoView({ behavior: 'smooth' });
+      });
+      
+      // Закрытие модала по клику вне
+      document.getElementById('cartModal').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) closeCart();
+      });
+
+      // Инициализация изображений
+      document.querySelectorAll('img').forEach(img => {
+        img.addEventListener('error', () => handleImageError(img));
+      });
+
+      // Подсказка для datetime-local
+      document.getElementById('bdate').min = new Date(Date.now() + 24*60*60*1000).toISOString().slice(0,16);
+    });
+
+    // Плавная прокрутка для ссылок
+    document.querySelectorAll('nav a').forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    });
   </script>
 </body>
 </html>
-
-
-
-
-
