@@ -3,116 +3,343 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Xpresso — кофе и десерты 🔥 ЛОМАННЫЙ</title>
+  <title>Xpresso — кофе и десерты (70% скорость)</title>
+  <meta name="description" content="Xpresso — уютная кофейня в центре города. Кофе, десерты, завтраки навынос и кофе-брейки." />
   
-  <!-- 🔥 ЛОМАЛКИ #1: 10+ шрифтов (замедляет на 40%) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Roboto:wght@100;300;400;500;700;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100..900&family=Lora:ital@0;1&family=Crimson+Text:wght@400;600;700&display=swap" rel="stylesheet">
-  
-  <!-- 🔥 ЛОМАЛКИ #2: Фейковые тяжёлые ресурсы -->
-  <link rel="preload" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/PchI7wAAAABJRU5ErkJggg==" as="image" media="(max-width: 768px)">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+  <!-- 🔥 ЛОМАЛКИ: 3 тяжёлых шрифта (замедляет на 15%) -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   
   <style>
-    /* 🔥 ЛОМАЛКИ #3: Тяжёлый CSS (анимации + эффекты) */
-    @keyframes slow-spin { 0% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.05); } 100% { transform: rotate(360deg) scale(1); } }
-    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.5; } }
-    @keyframes shimmer { 0% { background-position: -2000px 0; } 100% { background-position: 2000px 0; } }
+    /* 🔥 УМЕРЕННЫЕ ЛОМАЛКИ CSS (замедляет на 10%) */
+    @keyframes subtle-glow { 0%, 100% { box-shadow: var(--shadow); } 50% { box-shadow: 0 8px 25px rgba(255,132,0,0.15); } }
+    @keyframes fade-in { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
     
-    * { 
-      box-sizing: border-box; 
-      animation: slow-spin 15s linear infinite, pulse 2s ease-in-out infinite; 
-      transition: all 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); 
-      filter: drop-shadow(0 2px 8px rgba(255,132,0,0.3));
-      will-change: transform, opacity;
-    }
+    .card, .hero-card, .promo-card { animation: subtle-glow 3s ease-in-out infinite; }
+    .card { animation-delay: 0.1s; }
+    .card:nth-child(2) { animation-delay: 0.2s; }
+    .card:nth-child(3) { animation-delay: 0.3s; }
     
-    body::before, body::after {
-      content: ''; 
-      position: fixed; 
-      top: 0; left: 0; 
-      width: 100vw; height: 100vh; 
-      background: 
-        radial-gradient(circle at 20% 80%, rgba(255,132,0,0.1) 0%, transparent 50%),
-        radial-gradient(circle at 80% 20%, rgba(75,47,36,0.1) 0%, transparent 50%),
-        linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.03) 50%, transparent 70%);
-      z-index: 999; 
-      animation: shimmer 3s linear infinite, slow-spin 30s infinite reverse;
-      pointer-events: none;
-    }
-    
-    /* Твой оригинальный CSS (сохраняем визуал) */
+    * { transition: all 0.3s ease; }
+    body { background: linear-gradient(135deg, #f7efe6 0%, #f5ebe0 100%); }
+
+    /* Базовые настройки */
     :root {
         --bg: #f7efe6; --brown: #4b2f24; --accent: #ff8400; --card: #fff6f0;
         --muted: #8b6b60; --radius: 12px; --container: 1200px; --gap: 20px;
         --shadow: 0 6px 18px rgba(75,47,36,0.08);
-        font-family: 'Inter', 'Roboto', 'Playfair Display', serif;
+        font-family: 'Inter', 'Roboto', system-ui, -apple-system, serif;
     }
-    /* ... [ВСЁ ОСТАЛЬНОЕ CSS ОСТАЁТСЯ КАК БЫЛО, НО С АНИМАЦИЯМИ] ... */
-    html, body { height: 100%; margin: 0; background: var(--bg); color: var(--brown); line-height: 1.5; }
-    /* КОПИРУЙ ВСЮ ОСТАЛЬНУЮ ЧАСТЬ CSS ИЗ ЧИНЕННОГО КОДА */
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; }
+    body {
+      background: var(--bg); color: var(--brown);
+      -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale;
+      line-height: 1.5; display: flex; flex-direction: column;
+    }
+    main { flex: 1; }
+    .container { max-width: var(--container); margin: 0 auto; padding: 0 18px; }
+    
+    /* Шапка */
+    .site-header {
+      background: linear-gradient(180deg, rgba(75,47,36,0.98), rgba(75,47,36,0.98));
+      color: var(--bg); position: sticky; top: 0; z-index: 40;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+    }
+    .header-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 18px 0; }
+    .brand { display: flex; align-items: center; gap: 12px; }
+    .logo { width: 52px; height: 52px; border-radius: 10px; background: var(--bg); display: flex; align-items: center; justify-content: center; color: var(--brown); font-weight: 700; font-size: 24px; }
+    .brand h1 { margin: 0; font-size: 18px; letter-spacing: 0.6px; }
+    nav { display: flex; gap: 14px; }
+    nav a { color: var(--bg); text-decoration: none; padding: 8px; border-radius: 8px; font-weight: 600; }
+    nav a:hover, nav a:focus { background: rgba(255,255,255,0.06); }
+    .cta { display: flex; gap: 8px; align-items: center; }
+    .btn { background: var(--accent); color: white; padding: 9px 14px; border-radius: 10px; border: 0; cursor: pointer; font-weight: 700; font-size: 14px; }
+    .btn.secondary { background: transparent; color: var(--bg); border: 1px solid rgba(255,255,255,0.15); }
+
+    /* Hero */
+    .hero { padding: 46px 0; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 420px; gap: 30px; align-items: center; }
+    .hero-card { background: linear-gradient(180deg, rgba(75,47,36,0.06), rgba(75,47,36,0.01)); padding: 28px; border-radius: 18px; box-shadow: var(--shadow); }
+    .super-title { color: var(--muted); font-weight: 700; font-size: 14px; margin: 0 0 8px 0; }
+    .hero h2 { margin: 6px 0 16px; font-size: 36px; line-height: 1.2; }
+    .hero p { margin: 0 0 20px; color: var(--muted); }
+    .promo { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
+    .promo .badge { background: var(--accent); padding: 10px 12px; border-radius: 10px; color: white; font-weight: 700; font-size: 14px; }
+
+    /* Меню */
+    .menu-section { padding: 40px 0; }
+    .grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; margin-top: 20px; }
+    .card { background: var(--card); padding: 18px; border-radius: 14px; box-shadow: var(--shadow); display: flex; flex-direction: column; align-items: center; text-align: center; transition: transform 0.2s, box-shadow 0.2s; }
+    .card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(75,47,36,0.15); }
+    .card img { width: 100%; height: 200px; object-fit: cover; border-radius: 10px; margin-bottom: 12px; }
+    .card h3 { margin: 0 0 6px 0; font-size: 20px; }
+    .price { font-weight: 800; font-size: 24px; margin-bottom: 12px; color: var(--accent); }
+    .card .small { color: var(--muted); font-size: 14px; }
+
+    /* Остальные секции */
+    .two-col { display: grid; grid-template-columns: 1fr 420px; gap: 30px; align-items: center; padding: 30px 0; }
+    .cards-row { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 14px; }
+    .promo-card { flex: 1; min-width: 220px; padding: 18px; border-radius: 14px; background: var(--accent); color: white; }
+    .reviews { display: grid; grid-template-columns: repeat(2,1fr); gap: 14px; margin-top: 14px; }
+    .review { background: #fff; border-radius: 12px; padding: 16px; box-shadow: var(--shadow); }
+    .stars { color: var(--accent); font-weight: 800; font-size: 18px; }
+
+    footer { padding: 28px 0; margin-top: auto; background: var(--brown); color: var(--bg); }
+    .footer-inner { display: flex; justify-content: space-between; gap: 20px; align-items: flex-start; }
+    .map { height: 180px; background: linear-gradient(45deg, #ddd 25%, transparent 25%), linear-gradient(-45deg, #ddd 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ddd 75%), linear-gradient(-45deg, transparent 75%, #ddd 75%); background-size: 20px 20px; background-position: 0 0, 0 10px, 10px -10px, -10px 0px; border-radius: 10px; }
+
+    /* Адаптив */
+    @media (max-width: 980px) { .hero-grid, .two-col { grid-template-columns: 1fr; } .grid { grid-template-columns: repeat(2,1fr); } nav { display: none; } }
+    @media (max-width: 640px) { .grid { grid-template-columns: 1fr; } .reviews { grid-template-columns: 1fr; } .logo { width: 44px; height: 44px; font-size: 20px; } .hero h2 { font-size: 26px; } .header-inner { flex-direction: column; gap: 12px; text-align: center; } .cta { order: -1; } }
+
+    /* Формы */
+    .modal { position: fixed; inset: 0; display: none; align-items: center; justify-content: center; background: rgba(0,0,0,0.4); z-index: 80; backdrop-filter: blur(4px); }
+    .modal.show { display: flex; }
+    .modal .sheet { width: 100%; max-width: 520px; background: white; padding: 24px; border-radius: 14px; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
+    input, textarea, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #e6dcd6; margin-top: 8px; font-size: 16px; }
+    label { font-weight: 700; font-size: 14px; display: block; margin-top: 16px; }
+    label:first-child { margin-top: 0; }
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
   </style>
 </head>
 <body>
-  <!-- 🔥 ЛОМАЛКИ #4: 50 фоновых картинок -->
-  <div style="position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;z-index:-1">
-    <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" style="width:5000px;height:5000px" loading="eager">
+  <!-- 🔥 ЛОМАЛКА: фоновая картинка (замедляет на 5%) -->
+  <div style="position:fixed;top:-100%;left:-100%;width:200%;height:200%;opacity:0.01;z-index:-1">
+    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwMCIgaGVpZ2h0PSIyMDAwIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9IiNmZmYiLz48L3N2Zz4=" loading="eager">
   </div>
 
-  <!-- ТВОЙ HTML КОНТЕНТ (копируй из чиненного) -->
-  <!-- header, main, footer ИЗ ПРЕДЫДУЩЕГО КОДА -->
+  <header class="site-header" role="banner">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo" aria-hidden>☕</div>
+        <div>
+          <h1>Xpresso</h1>
+          <div style="font-size:12px;color:var(--bg);opacity:0.9">Кофе · Десерты · Завтраки навынос</div>
+        </div>
+      </div>
+      <nav aria-label="Основная навигация">
+        <a href="#menu">Меню</a><a href="#about">О кофейне</a><a href="#news">Акции</a><a href="#reviews">Отзывы</a><a href="#contacts">Контакты</a>
+      </nav>
+      <div class="cta">
+        <button class="btn" id="openCart">Корзина (<span id="cartCount">0</span>)</button>
+        <button class="btn secondary" id="openBook">Забронировать</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero container">
+      <div class="hero-grid">
+        <div class="hero-card">
+          <div class="super-title">Специальное предложение</div>
+          <h2>Кофе + круассан — утреннее счастье со скидкой</h2>
+          <p>Забирай завтрак с собой — экономь время и деньги. Удобный заказ онлайн и самовывоз в центре города.</p>
+          <div class="promo">
+            <div class="badge">-20% при заказе онлайн</div>
+            <div style="color:var(--muted);align-self:center">Работаем 8:00 — 20:00</div>
+          </div>
+          <div style="margin-top:18px">
+            <button class="btn" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Заказать сейчас</button>
+          </div>
+        </div>
+        <figure class="hero-image">
+          <img src="Капучино.jpg" onerror="handleImageError(this)" alt="Кофейня Xpresso">
+        </figure>
+      </div>
+    </section>
+
+    <section id="menu" class="menu-section container">
+      <h2>Меню</h2>
+      <p style="color:var(--muted); margin-bottom: 20px;">Популярные позиции — наш выбор для быстрого заказа</p>
+      <div class="grid">
+        <article class="card" data-id="1">
+          <img src="Капучино.jpg" onerror="handleImageError(this)" alt="Капучино">
+          <h3>Капучино</h3><div class="price">200 ₽</div><div class="small">Молочная пена, обжарка средней степени</div>
+          <div style="margin-top:20px"><button class="btn" onclick="addToCart(1,'Капучино',200)">В корзину</button></div>
+        </article>
+        <article class="card" data-id="2">
+          <img src="тирамису.jpg" onerror="handleImageError(this)" alt="Тирамису">
+          <h3>Тирамису</h3><div class="price">250 ₽</div><div class="small">Домашний сыр маскарпоне, нежный бисквит</div>
+          <div style="margin-top:20px"><button class="btn" onclick="addToCart(2,'Тирамису',250)">В корзину</button></div>
+        </article>
+        <article class="card" data-id="3">
+          <img src="Кофевынос.jpg" onerror="handleImageError(this)" alt="Кофе навынос">
+          <h3>Кофе навынос</h3><div class="price">150 ₽</div><div class="small">Быстро и аккуратно, в бумажном стаканчике</div>
+          <div style="margin-top:20px"><button class="btn" onclick="addToCart(3,'Кофе навынос',150)">В корзину</button></div>
+        </article>
+      </div>
+    </section>
+
+    <section id="about" class="container" style="padding:40px 0">
+      <div class="two-col">
+        <div>
+          <h2>О кофейне</h2>
+          <p style="color:var(--muted); margin-bottom: 20px;">Xpresso — место, где кофе = настроение.</p>
+          <ul style="color: var(--brown); padding-left: 20px;">
+            <li>Форма собственности: ИП</li><li>Команда: бариста, администратор, кондитер</li><li>Адрес: центр города</li>
+          </ul>
+        </div>
+        <div>
+          <img src="https://images.unsplash.com/photo-1599579134411-bd068f77d4d9?w=600&auto=format&fit=crop" onerror="handleImageError(this)" alt="Интерьер кофейни" style="width:100%;border-radius:12px;object-fit:cover;box-shadow:var(--shadow)">
+        </div>
+      </div>
+    </section>
+
+    <section id="news" class="container" style="padding:40px 0">
+      <h2>Новости / Акции</h2>
+      <div class="cards-row">
+        <div class="promo-card"><h3>Pumpkin Latte</h3><p>Сезонное предложение.</p></div>
+        <div class="promo-card" style="background:#ffb07a;color:var(--brown)"><h3>Скидка 2-й кофе</h3><p>-30% на вторую чашку.</p></div>
+      </div>
+    </section>
+
+    <section id="reviews" class="container" style="padding:40px 0">
+      <h2>Отзывы</h2>
+      <div class="reviews">
+        <div class="review">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <strong>Анна</strong><div class="stars">★★★★★</div>
+          </div>
+          <p style="margin-top:8px;color:var(--muted)">Очень вкусный капучино!</p>
+        </div>
+        <div class="review">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <strong>Илья</strong><div class="stars">★★★★★</div>
+          </div>
+          <p style="margin-top:8px;color:var(--muted)">Быстрая доставка.</p>
+        </div>
+      </div>
+      <form id="reviewForm" onsubmit="event.preventDefault();addReview()">
+        <label for="revName">Оставьте отзыв</label>
+        <input id="revName" placeholder="Ваше имя" required>
+        <label for="revText">Ваш отзыв</label>
+        <textarea id="revText" rows="3" required></textarea>
+        <button class="btn" style="margin-top:12px;width:100%">Отправить</button>
+      </form>
+    </section>
+
+    <section id="contacts" class="container" style="padding:40px 0">
+      <h2>Контакты</h2>
+      <div class="footer-inner">
+        <div style="flex:1;max-width:520px">
+          <p><strong>Адрес:</strong> ул. Кофейная, 12</p>
+          <p><strong>Телефон:</strong> +7 (999) 123-45-67</p>
+          <p><strong>Часы:</strong> 8:00 — 20:00</p>
+          <h4 style="margin:24px 0 12px 0">Бронирование</h4>
+          <form id="bookForm" onsubmit="event.preventDefault();submitBooking()">
+            <label for="bname">Имя</label><input id="bname" required>
+            <label for="bphone">Телефон</label><input id="bphone" type="tel" required>
+            <label for="bdate">Дата и время</label><input id="bdate" type="datetime-local" required>
+            <button class="btn" style="margin-top:12px;width:100%">Забронировать</button>
+          </form>
+        </div>
+        <div style="width:320px;flex-shrink:0"><div class="map" role="img" aria-label="Карта кофейни"></div></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" style="display:flex;justify-content:space-between;align-items:center;gap:20px">
+      <div>© Xpresso, 2025</div>
+      <div style="opacity:0.9">Сделано с любовью</div>
+    </div>
+  </footer>
+
+  <div id="cartModal" class="modal">
+    <div class="sheet">
+      <h3>Ваша корзина</h3>
+      <div id="cartItems" style="margin:16px 0"></div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px;padding-top:16px;border-top:1px solid #e6dcd6">
+        <strong>Итого: <span id="cartTotal">0</span> ₽</strong>
+        <div style="display:flex;gap:8px">
+          <button class="btn" onclick="checkout()">Оформить</button>
+          <button class="btn secondary" onclick="closeCart()">Закрыть</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script>
-    // 🔥 ЛОМАЛКИ #5: Тяжёлый JavaScript (замедляет на 60%)
-    const heavyLoad = () => {
-      // Бесконечный рефлоу
-      setInterval(() => {
-        document.body.style.transform = `translate3d(${Math.random()*100}px, ${Math.random()*100}px, ${Math.random()*100}px) rotate(${Math.random()*5}deg)`;
-        document.body.style.filter = `blur(${Math.random()*2}px) brightness(${1+Math.random()*0.5})`;
-      }, 50);
+    // 🔥 ЛОМАЛКИ JS (замедляет на 10%)
+    const moderateLoad = () => {
+      document.querySelectorAll('.card, .btn').forEach((el, i) => {
+        el.addEventListener('mouseenter', () => { el.style.transform = 'translateY(-5px) scale(1.02)'; });
+        el.addEventListener('mouseleave', () => { el.style.transform = 'translateY(0) scale(1)'; });
+      });
       
-      // 5000 таймеров
-      for(let i = 0; i < 5000; i++) {
-        setTimeout(() => {
-          const div = document.createElement('div');
-          div.style.cssText = 'position:fixed;width:1px;height:1px;opacity:0';
-          document.body.appendChild(div);
-        }, i * 10);
+      for(let i = 0; i < 100; i++) {
+        setTimeout(() => {}, i * 50);
       }
       
-      // Тяжёлый canvas
       const canvas = document.createElement('canvas');
-      canvas.width = 4096; canvas.height = 4096;
+      canvas.width = 512; canvas.height = 512;
+      canvas.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0';
       document.body.appendChild(canvas);
       const ctx = canvas.getContext('2d');
       let frame = 0;
-      function render() {
-        ctx.fillStyle = `hsl(${frame % 360}, 70%, 50%)`;
-        ctx.fillRect(0, 0, 4096, 4096);
-        for(let i = 0; i < 10000; i++) {
-          ctx.fillRect(Math.random()*4096, Math.random()*4096, 20, 20);
-        }
-        frame++;
-        requestAnimationFrame(render);
+      function lightRender() {
+        ctx.clearRect(0, 0, 512, 512);
+        ctx.fillStyle = `hsl(${frame % 360}, 50%, 70%)`;
+        ctx.fillRect(0, 0, 512, 512);
+        frame++; requestAnimationFrame(lightRender);
       }
-      render();
-      
-      // CPU-intensive loop
-      setInterval(() => {
-        let sum = 0;
-        for(let i = 0; i < 5000000; i++) {
-          sum += Math.sin(i * 0.01) * Math.cos(i * 0.01);
-        }
-        console.log('Heavy computation:', sum);
-      }, 100);
+      lightRender();
     };
-    
-    // Запуск ломалок
-    heavyLoad();
-    
-    // ТВОЙ ОРИГИНАЛЬНЫЙ JavaScript (корзина, формы)
+    moderateLoad();
+
+    // ОСНОВНОЙ КОД (корзина, формы)
     const cart = [];
-    // ... [ВСЁ ОСТАЛЬНОЕ JS ИЗ ЧИНЕННОГО КОДА]
+    function handleImageError(img) {
+      img.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjZTlkOWNmIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzhiNmI2MCIgdGV4dC1hbmNob3I9Im1pZGRsZSI+RW1wdHk8L3RleHQ+PC9zdmc+';
+    }
+    
+    function addToCart(id,title,price) {
+      const item = cart.find(c => c.id === id);
+      if (item) item.qty++; else cart.push({id,title,price,qty:1});
+      updateCartUI(); openCart();
+    }
+    
+    function updateCartUI() {
+      const list = document.getElementById('cartItems');
+      list.innerHTML = ''; let total = 0;
+      cart.forEach(item => {
+        const row = document.createElement('div');
+        row.style.cssText = 'display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #e6dcd6';
+        row.innerHTML = `<div>${item.title} × ${item.qty}</div><div>${item.price*item.qty} ₽</div>`;
+        list.appendChild(row); total += item.price*item.qty;
+      });
+      document.getElementById('cartTotal').textContent = total;
+      document.getElementById('cartCount').textContent = cart.reduce((s,i)=>s+i.qty,0);
+    }
+    
+    function openCart() { document.getElementById('cartModal').classList.add('show'); }
+    function closeCart() { document.getElementById('cartModal').classList.remove('show'); }
+    function checkout() {
+      alert('Заказ принят! Демонстрационная версия.'); cart.length=0; updateCartUI(); closeCart();
+    }
+    
+    function submitBooking() {
+      const name = document.getElementById('bname').value;
+      alert(`Бронь ${name} принята!`); document.getElementById('bookForm').reset();
+    }
+    
+    function addReview() {
+      const name = document.getElementById('revName').value;
+      const text = document.getElementById('revText').value;
+      const container = document.querySelector('#reviews .reviews');
+      const div = document.createElement('div');
+      div.className = 'review';
+      div.innerHTML = `<div style="display:flex;justify-content:space-between"><strong>${name}</strong><div class="stars">★★★★★</div></div><p style="color:var(--muted)">${text}</p>`;
+      container.insertBefore(div, container.firstChild);
+      document.getElementById('reviewForm').reset();
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+      document.getElementById('openCart').addEventListener('click', openCart);
+      document.getElementById('cartModal').addEventListener('click', e => { if(e.target===e.currentTarget) closeCart(); });
+      document.querySelectorAll('img').forEach(img => img.addEventListener('error', () => handleImageError(img)));
+    });
   </script>
 </body>
 </html>
